@@ -12,3 +12,5 @@ Some small notes
 5: Yellow box effect(e.g. views list).
 
 6: Page move to bookmark section animation.
+
+7: Toggle two funcitions JavaScript

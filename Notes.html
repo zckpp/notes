@@ -148,3 +148,19 @@
             return false;
         });
     </script>
+
+<!--7: JS toggle two functions-->
+    <script>
+        function down (el) {
+            el.next().slideDown();
+            el.addClass('active');
+        }
+
+        function up (el) {
+            el.next().slideUp();
+            el.removeClass('active');
+        }
+        $('button').click(function () {
+            return (this.tog = !this.tog) ? down($(this)) : up($(this));
+        });
+    </script>
