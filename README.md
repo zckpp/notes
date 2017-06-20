@@ -14,3 +14,5 @@ Some small notes
 6: Page move to bookmark section animation.
 
 7: Toggle two funcitions JavaScript
+
+8: 'Back to Top' button

@@ -164,3 +164,54 @@
             return (this.tog = !this.tog) ? down($(this)) : up($(this));
         });
     </script>
+
+<!--8: Back to Top button-->
+    <style>
+        .footer-logo .back-top {
+            background-color: rgba(0,0,0,0.3);
+            bottom: 0;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            font-size: 1.4rem;
+            height: 60px;
+            line-height: 3.2rem;
+            position: fixed;
+            right: 5%;
+            text-align: center;
+            text-decoration: none;
+            width: 60px;
+            z-index: 99;
+        }
+        .footer-logo .arrow {
+            border-left: 2px solid #fff;
+            border-top: 2px solid #fff;
+            height: 25px;
+            left: 30%;
+            position: relative;
+            top: 40%;
+            width: 25px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>
+
+    <script>
+        //scroll event, hide button till certain offset
+        $(window).scroll(function (event) {
+            if (jQuery(this).scrollTop() > 400) {
+                jQuery('.back-top').fadeIn(300);
+            } else {
+                jQuery('.back-top').fadeOut(300);
+            }
+        });
+
+        //click event
+        $('.back-top').click(function(event) {
+            event.preventDefault();
+            jQuery('html, body').animate({scrollTop: 0}, 300);
+            return false;
+        })
+    </script>
+
