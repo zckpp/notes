@@ -13,6 +13,12 @@ Some small notes
 
 6: Page move to bookmark section animation.
 
-7: Toggle two funcitions JavaScript
+7: Toggle two functions JavaScript
 
 8: 'Back to Top' button
+
+9: Add template based on content type, without effect on edit form
+ 
+10: Add CSS file based on content type
+
+11: Add taxonomy filter to view dynamically
