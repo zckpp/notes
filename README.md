@@ -22,3 +22,5 @@ Some small notes
 10: Add CSS file based on content type
 
 11: Add taxonomy filter to view dynamically
+
+12: HTML5 zoom in animation
