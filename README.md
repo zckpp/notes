@@ -24,3 +24,5 @@ Some small notes
 11: Add taxonomy filter to view dynamically
 
 12: HTML5 zoom in animation
+
+13: simple hook_menu call to set up config form drupal 7

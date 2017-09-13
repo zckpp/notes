@@ -269,15 +269,52 @@
     ?>
 
 <!--12: HTML5 zoom in animation -->
-<style>
-    item-zoom {
-        -webkit-animation: slowZoom 40s infinite;
-        -ms-animation: slowZoom 40s infinite;
-        animation: slowZoom 40s infinite;
+    <style>
+        item-zoom {
+            -webkit-animation: slowZoom 40s infinite;
+            -ms-animation: slowZoom 40s infinite;
+            animation: slowZoom 40s infinite;
+        }
+
+        @-webkit-keyframes slowZoom{0%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.1)}100%{-webkit-transform:scale(1)}}
+        @-moz-keyframes slowZoom{0%{-moz-transform:scale(1)}50%{-moz-transform:scale(1.1)}100%{-moz-transform:scale(1)}}
+        @-o-keyframes slowZoom{0%{-o-transform:scale(1)}50%{-o-transform:scale(1.1)}100%{-o-transform:scale(1)}}
+        @keyframes slowZoom{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+    </style>
+
+<!--13: simple hook_menu call to set up config form drupal 7-->
+    <?php
+    function custom_blocks_admin() {
+        $form = array();
+        // display value if already set
+        $value = variable_get('custom_blocks_switch');
+        // check box field
+        $form['custom_blocks_switch'] = array(
+            '#type' => 'checkbox',
+            '#title' => t('Memex server is running'),
+            // init default value
+            '#default_value' => isset($value) ? $value: '',
+        );
+
+        return system_settings_form($form);
     }
-    
-    @-webkit-keyframes slowZoom{0%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.1)}100%{-webkit-transform:scale(1)}}
-    @-moz-keyframes slowZoom{0%{-moz-transform:scale(1)}50%{-moz-transform:scale(1.1)}100%{-moz-transform:scale(1)}}
-    @-o-keyframes slowZoom{0%{-o-transform:scale(1)}50%{-o-transform:scale(1.1)}100%{-o-transform:scale(1)}}
-    @keyframes slowZoom{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
-</style>
+
+    function custom_blocks_menu() {
+
+        $items = array();
+        // put it on admin menu bar
+        $items['admin/settings/switch'] = array(
+            // name displayed on the menu
+            'title' => 'Memex switch',
+            'description' => 'Memex server status switch page',
+            'page callback' => 'drupal_get_form',
+            // call form funtion here
+            'page arguments' => array('custom_blocks_admin'),
+            // go to permission page, find the argument that fits your goal
+            'access arguments' => array('administer users'),
+            'type' => MENU_NORMAL_ITEM,
+        );
+
+        return $items;
+    }
+    ?>
