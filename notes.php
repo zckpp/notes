@@ -267,3 +267,17 @@
     $view->execute();
     print $view->render('your_display');
     ?>
+
+<!--12: HTML5 zoom in animation -->
+<style>
+    item-zoom {
+        -webkit-animation: slowZoom 40s infinite;
+        -ms-animation: slowZoom 40s infinite;
+        animation: slowZoom 40s infinite;
+    }
+    
+    @-webkit-keyframes slowZoom{0%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.1)}100%{-webkit-transform:scale(1)}}
+    @-moz-keyframes slowZoom{0%{-moz-transform:scale(1)}50%{-moz-transform:scale(1.1)}100%{-moz-transform:scale(1)}}
+    @-o-keyframes slowZoom{0%{-o-transform:scale(1)}50%{-o-transform:scale(1.1)}100%{-o-transform:scale(1)}}
+    @keyframes slowZoom{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+</style>
