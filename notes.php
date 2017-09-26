@@ -280,6 +280,8 @@
         @-moz-keyframes slowZoom{0%{-moz-transform:scale(1)}50%{-moz-transform:scale(1.1)}100%{-moz-transform:scale(1)}}
         @-o-keyframes slowZoom{0%{-o-transform:scale(1)}50%{-o-transform:scale(1.1)}100%{-o-transform:scale(1)}}
         @keyframes slowZoom{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+        /*remember to add overflow: hidden to the parent element*/
     </style>
 
 <!--13: simple hook_menu call to set up config form drupal 7-->
@@ -318,3 +320,4 @@
         return $items;
     }
     ?>
+
