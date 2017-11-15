@@ -309,8 +309,8 @@
             // name displayed on the menu
             'title' => 'Memex switch',
             'description' => 'Memex server status switch page',
+            // call form function here
             'page callback' => 'drupal_get_form',
-            // call form funtion here
             'page arguments' => array('custom_blocks_admin'),
             // go to permission page, find the argument that fits your goal
             'access arguments' => array('administer users'),
@@ -321,3 +321,21 @@
     }
     ?>
 
+<!--14: one time animation when page loaded-->
+    <style>
+        .item {
+            opacity: 0;
+            -moz-transition: opacity 1.5s;
+            -webkit-transition: opacity 1.5s;
+            -o-transition: opacity 1.5s;
+            transition: opacity 1.5s;
+        }
+        .item.fadein {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        $(window).load(function() {
+            $('.item').addClass("fadein");
+        })
+    </script>
