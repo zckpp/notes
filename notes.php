@@ -339,3 +339,10 @@
             $('.item').addClass("fadein");
         })
     </script>
+
+<!--15: global install drush on linux -->
+    1: install composer and drush
+
+    2: find composer dir: composer global config home
+
+    3: add symbolic link: sudo ln -s /"composer dir"/vendor/drush/drush/drush /usr/local/bin
