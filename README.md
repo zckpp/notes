@@ -30,3 +30,5 @@ Some small notes
 14: one time animation when page loaded
 
 15: global install drush on linux
+
+16: Image with reflect shadow rotates when hover

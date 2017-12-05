@@ -346,3 +346,58 @@
     2: find composer dir: composer global config home
 
     3: add symbolic link: sudo ln -s /"composer dir"/vendor/drush/drush/drush /usr/local/bin
+
+<!--16: Image with reflect shadow rotates when hover-->
+    <style>
+        .news-image-wrapper {
+            border-radius: 11px;
+            overflow: visible;
+            position: relative;
+            max-width: 110px;
+        &::before {
+             display: block;
+             content: "";
+             height: 90%;
+             width: 160%;
+             position: absolute;
+             background-image: url(your_url);
+             background-size: 100% auto;
+             background-repeat: no-repeat;
+             top: 89%;
+             left: -30%;
+             right: 0;
+             transition: all .1s ease-out;
+             transform-origin: 30% 50%;
+             pointer-events: none;
+         }
+        &:hover {
+        .news-image {
+            transform: translateX(15%) rotateZ(0) scale(.87);
+        img {
+            transform: scale(1.2) translateX(-10%) translateY(6%) rotateZ(0);
+        }
+        }
+        }
+        &:hover::before {
+             opacity: 0;
+             transform: scaleX(0);
+         }
+        .news-image {
+            transform: translateX(15%) rotateZ(-11deg) scale(.87);
+            transition: transform .2s ease-out;
+            background: #5fb7ce;
+            border: 5px solid #5fb7ce;
+            transform-origin: 0 100%;
+            overflow: hidden;
+            border-radius: 11px;
+        }
+        }
+
+        .news-title {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: bold;
+        }
+        .news.row {
+            margin-top: 30px;
+        }
+    </style>
