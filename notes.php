@@ -401,3 +401,12 @@
             margin-top: 30px;
         }
     </style>
+
+<!--17: Drupal 8 redirect after login-->
+    <?php
+    function custom_blocks_user_login($account) {
+        //base url with https
+        global $base_secure_url;
+        \Drupal::service('request_stack')->getCurrentRequest()->query->set('destination', $base_secure_url);
+    }
+    ?>

@@ -32,3 +32,6 @@ Some small notes
 15: global install drush on linux
 
 16: Image with reflect shadow rotates when hover
+
+17: Drupal 8 redirect after login
+
