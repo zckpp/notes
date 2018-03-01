@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<!--3: click outside menu to close for responsive menu_drupal-->
+<!--3: click outside menu to close for responsive menu_drupal/super fish-->
 <script>
     $('body').click(function (e) {
         var menu = $('.responsive-menus');
@@ -87,6 +87,24 @@
             }
         }
     });
+
+    //Superfish version
+    $('html').click(function () {
+        var menu = $('ul.sf-menu');
+        if (menu.hasClass('sf-expanded')) {
+            menu.removeClass('sf-expanded');
+            menu.addClass('sf-hidden');
+        }
+    });
+    //if click on the menu or toggle button do not close, bind event to menu block instead of toggle button because it needs click to toggle
+    $('div.block-superfish').click(function (e) {
+        e.stopPropagation();
+        //Can only bind one object at a time
+    });
+    $('ul.sf-menu a').click(function (e) {
+        e.stopPropagation();
+    });
+
 </script>
 
 <!--4: image frame effect-->

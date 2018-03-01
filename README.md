@@ -5,7 +5,7 @@ Some small notes
 
 2: Bio block image with gradient background text(e.g.Hazen's block).
 
-3: Click outside menu to close for responsive_menu, drupal.
+3: Click outside menu to close for responsive_menu, drupal/super fish.
 
 4: Image white border -- picture frame effect.
 
