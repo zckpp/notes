@@ -35,3 +35,5 @@ Some small notes
 
 17: Drupal 8 redirect after login
 
+18: Centered section bottom shadow effect
+

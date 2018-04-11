@@ -428,3 +428,23 @@
         \Drupal::service('request_stack')->getCurrentRequest()->query->set('destination', $base_secure_url);
     }
     ?>
+
+<!--18: Centered section bottom shadow effect-->
+    <style>
+        section {
+            position: relative;
+        }
+        section:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            -webkit-box-shadow: 0 0 15px rgba(0,0,0,.6);
+            box-shadow: 0 0 15px rgba(0,0,0,.6);
+            bottom: 0;
+            width: 94%;
+            height: 40px;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            left: 3%;
+        }
+    </style>
