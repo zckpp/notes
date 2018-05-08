@@ -37,3 +37,5 @@ Some small notes
 
 18: Centered section bottom shadow effect
 
+19: JavaScript swap image and text column in odd/even row
+

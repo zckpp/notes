@@ -448,3 +448,12 @@
             left: 3%;
         }
     </style>
+
+<!--19: JavaScript swap image and text column in odd/even row-->
+    <script>
+        $(document).ready(function(){
+            $('.row:odd div.column:first-child').each(function () {
+                $(this).insertAfter($(this).next('div'));
+            });
+        });
+    </script>
