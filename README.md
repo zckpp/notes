@@ -39,3 +39,5 @@ Some small notes
 
 19: JavaScript swap image and text column in odd/even row
 
+20: Looping page from top to bottom
+

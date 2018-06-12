@@ -457,3 +457,27 @@
             });
         });
     </script>
+
+<!--20: Looping page from top to bottom-->
+<script>
+    var body = document.body,
+        html = document.documentElement;
+//find height
+    var height = Math.max( body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight );
+//init loop if window needs scroll
+    if ($(document).height() > $(window).height() ) {
+        setInterval(function(){
+
+            //time to scroll to bottom
+            setTimeout(function() {
+                //minus the window height bcuz scrollTop measure starts from the top of the window
+                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 15000);//15 seconds to the bottom
+            },1000);
+
+            //scroll back to top
+            $('html, body').animate({scrollTop:0}, 2000);
+
+        },1000);
+    }
+</script>
