@@ -275,8 +275,8 @@
     $view->add_item(
         $view->current_display,
         'filter',
-        'taxonomy_index',
-        'tid',
+        'field_data_field_machie_name',
+        'field_machie_name_tid',
         array(
             'operator' => 'or',
             'value' => 'your tid variable',
@@ -284,6 +284,8 @@
         ));
     $view->execute();
     print $view->render('your_display');
+    //cannot assign print to variables
+    $result = $view->render('related_policy_view');
     ?>
 
 <!--12: HTML5 zoom in animation -->
