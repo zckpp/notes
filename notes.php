@@ -483,3 +483,34 @@
         },1000);
     }
 </script>
+
+<!--21: Use url parameter to open accordion-->
+<script>
+    // Accordion
+    lists.project = $(".project-list");
+    function down (el) {
+        el.next().slideDown();
+        el.addClass('active');
+    }
+    function up (el) {
+        el.next().slideUp();
+        el.removeClass('active');
+    }
+    lists.project.click(function () {
+        // Toggle accordion
+        return ($(this).hasClass('active')) ? up($(this)) : down($(this));
+    });
+
+    // get parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('action')) {
+        // set ID based on parameter
+        var list_id = "#" + urlParams.get('action');
+        // open accordion based on ID
+        down($(list_id));
+        // move to anchor
+        $('html, body').animate({
+            scrollTop: $(list_id).offset().top
+        }, 1000);
+    }
+</script>
