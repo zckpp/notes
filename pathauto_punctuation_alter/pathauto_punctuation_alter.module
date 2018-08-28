@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Pathauto punctuation alter
+ * Quinn Zhang
+ * Aug 2018
+ *
+ * Add additional punctuation to path auto
+ */
+
+function pathauto_punctuation_alter_pathauto_punctuation_chars_alter(&$punctuation) {
+    $punctuation['word_doubleQuotation_left']         = array('value' => '“', 'name' => t('Left Double Quotation from Word'));
+    $punctuation['word_doubleQuotation_right']         = array('value' => '”', 'name' => t('Right Double Quotation from Word'));
+    $punctuation['word_singleQuotation_left']         = array('value' => '‘', 'name' => t('Left Single Quotation from Word'));
+    $punctuation['word_singleQuotation_right']         = array('value' => '’', 'name' => t('Right Single Quotation from Word'));
+}

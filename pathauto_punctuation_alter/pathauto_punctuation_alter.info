@@ -1,0 +1,11 @@
+name = Pathauto punctuation alter module
+description = Provides additional punctuation to pathauto module
+dependencies[] = pathauto
+
+core = 7.x
+
+; Started 08/28/2018
+version = "7.x-1.0"
+core = "7.x"
+project = "pathauto_punctuation_alter"
+
