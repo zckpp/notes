@@ -43,3 +43,5 @@ Some small notes
 
 21: Use url parameter to open accordion
 
+22: Use session to store data for download as CSV file
+
