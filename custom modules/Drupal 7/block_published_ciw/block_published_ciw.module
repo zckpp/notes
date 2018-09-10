@@ -1,0 +1,91 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: qzhang
+ * Date: 9/10/2018
+ * Time: 11:09 AM
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function block_published_ciw_permission() {
+    return array(
+        'use block published' => array(
+            'title' => t('Access block published'),
+            'description' => t('Permission to configure who to block'),
+        ),
+    );
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function block_published_ciw_node_access($node, $op, $account) {
+    global $user;
+    if (
+        // The $node argument can be either a $node object or a machine name of
+        // node's content type. It is called multiple times during a page load
+        // so it is enough if you perform the check once you get the object.
+        // hard code to effort reports
+        is_object($node) && $node->type == 'effort_report' &&
+        // Operation on which you want to act: "create", "delete", "update", "view".
+        $op == 'update'
+    ) {
+        // Check if the node is published.
+        //  var_dump($node);
+        $selected_roles = variable_get('block_published_ciw_role');
+        $banned = false;
+        if (is_array($selected_roles)) {
+            foreach ($selected_roles as $role) {
+                if ($node->status == 1 && in_array($role, $user->roles)) {
+                    $banned = true;
+                }
+            }
+        }
+        elseif ($node->status == 1 && in_array(variable_get('block_published_ciw_role','author'), $user->roles)) {
+            $banned = true;
+        }
+        if ($banned == true) return NODE_ACCESS_DENY;
+    }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function block_published_ciw_menu() {
+    $items = array();
+    $items['admin/config/administration/block_published_ciw'] = array(
+        'title' => 'Block publised',
+        'description' => 'Select roles to block access',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('block_published_ciw_form'),
+        'access arguments' => array('use block published'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+/**
+ * Page callback: Current posts settings
+ *
+ * @see block_published_ciw_menu()
+ */
+function block_published_ciw_form($form, &$form_state) {
+    $roles = user_roles($membersonly = TRUE, $permission = NULL);
+    $options = array();
+    foreach ($roles as $role) {
+        $options[$role] = $role;
+    }
+    $form['block_published_ciw_role'] = array(
+        '#type' => 'select',
+        '#title' => t('The role names'),
+        '#options' => $options,
+        '#default_value' => variable_get('block_published_ciw_role', 'author'),
+        '#multiple' => TRUE,
+        '#description' => t('Select the role names that its users should not be able to edit published contents.'),
+        '#required' => TRUE,
+    );
+
+    return system_settings_form($form);
+}

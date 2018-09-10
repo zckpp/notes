@@ -1,0 +1,4 @@
+name = Block published
+description = Block access to published reports
+core = 7.x
+configure = admin/config/administration/block_published_ciw
