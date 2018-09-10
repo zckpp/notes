@@ -33,7 +33,6 @@ function block_published_ciw_node_access($node, $op, $account) {
         $op == 'update'
     ) {
         // Check if the node is published.
-        //  var_dump($node);
         $selected_roles = variable_get('block_published_ciw_role');
         $banned = false;
         if (is_array($selected_roles)) {
@@ -56,8 +55,8 @@ function block_published_ciw_node_access($node, $op, $account) {
 function block_published_ciw_menu() {
     $items = array();
     $items['admin/config/administration/block_published_ciw'] = array(
-        'title' => 'Block publised',
-        'description' => 'Select roles to block access',
+        'title' => 'Block editing published',
+        'description' => 'Select roles to block editing to effort report',
         'page callback' => 'drupal_get_form',
         'page arguments' => array('block_published_ciw_form'),
         'access arguments' => array('use block published'),
@@ -72,8 +71,10 @@ function block_published_ciw_menu() {
  * @see block_published_ciw_menu()
  */
 function block_published_ciw_form($form, &$form_state) {
+    // get existing roles except anonymous
     $roles = user_roles($membersonly = TRUE, $permission = NULL);
     $options = array();
+    // set value for each options
     foreach ($roles as $role) {
         $options[$role] = $role;
     }
