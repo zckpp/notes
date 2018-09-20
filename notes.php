@@ -547,3 +547,59 @@ if (!empty($_SESSION['download'])) {
     unset($_SESSION['download']);
 }
 ?>
+
+<!--23: Use regex to extract desired part from HTML-->
+<?php
+function extractBody($url) {
+    // only process html files
+    if (strpos($url, '.html') !== false) {
+        $file = file_get_contents($url, true);
+        $matches = [];
+        // in this case get <div id="inside-content2">
+        preg_match('/<\s*div.id=.inside-content2.*>.*.<\s*\/\s*div>/', $file, $matches);
+        if (!empty($matches[0])) {
+            echo $url."is being processed \r";
+            file_put_contents($url, $matches[0]);
+        }
+    }
+}
+
+// get directory
+$dir = "../html-mini/";
+$a = scandir($dir);
+foreach ($a as $html) {
+    extractBody($html);
+}
+?>
+
+<!--24: Convert multiple HTML files into a json file for Drupal feeds-->
+<?php
+function toJson($url) {
+    // only process HTML
+    if (strpos($url, '.html') !== false) {
+        $arr = [];
+        $filename = pathinfo($url, PATHINFO_FILENAME);
+        echo "processing file: " . $filename . "\n";
+        $arr['title'] = $filename;
+        $body = file_get_contents($url, true);
+        $arr['body'] = $body;
+        // return null for article without body content
+        if (strlen($body) > 0) {
+            return $arr;
+        }
+    }
+}
+$array = [];
+$dir = "../html-mini/";
+$a = scandir($dir);
+foreach ($a as $html) {
+    $temp = toJson($html);
+    // ignore article without body content
+    if ($temp !== null) {
+        $array[] = $temp;
+    }
+}
+$fp = fopen('summery.json', 'w');
+fwrite($fp, json_encode($array));
+fclose($fp);
+?>

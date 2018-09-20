@@ -45,3 +45,7 @@ Some small notes
 
 22: Use session to store data for download as CSV file
 
+23: Use regex to extract desired part from HTML
+
+24: Convert multiple HTML files into a json file for Drupal feeds
+
