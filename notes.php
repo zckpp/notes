@@ -603,3 +603,26 @@ $fp = fopen('summery.json', 'w');
 fwrite($fp, json_encode($array));
 fclose($fp);
 ?>
+
+<!--25: Radio select button with custom text input field-->
+<div class="amount">
+    <input name="amount" onchange="ca.disabled = true;" type="radio" value="1000.00" id="b1000"><label for="b1000">&nbsp;$1,000</label>
+    <input name="amount" onchange="ca.disabled = true;" type="radio" value="500.00" id="b500"><label for="b500">&nbsp;$500</label>
+    <input name="amount" onchange="ca.disabled = true;" type="radio" value="250.00" id="b250"><label for="b250">&nbsp;$250</label>
+    <input name="amount" onchange="ca.disabled = true;" type="radio" value="100.00" id="b100"><label for="b100">&nbsp;$100</label>
+    <!--if custom amount checked, enable text input field-->
+    <br>
+    <input name="amount" onchange="ca = document.getElementById('custom_amount'); ca.value = ''; ca.disabled = false; ca.name = 'amount';" type="radio" id="other">
+    <label for="other">Other: $ </label>
+    <input disabled="disabled" id="custom_amount" name="amount_disabled" onchange="document.getElementById('a3').value = this.value;" required="" size="5" type="text">
+</div>
+<style>
+    /*hide custom amount until radio button is checked*/
+    #custom_amount {
+        font-size: 1.5em;
+        display: none;
+    }
+    #other:checked + label + input {
+        display: inline;
+    }
+</style>
