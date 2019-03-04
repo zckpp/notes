@@ -626,3 +626,48 @@ fclose($fp);
         display: inline;
     }
 </style>
+
+<!--26: Image tooltip pure CSS-->
+<a class="tooltip-image" href="javascript: void(0)">
+    mountains
+    <span>
+        <img src="/image.jpg">
+    </span>
+</a>
+<style>
+    /*SCSS*/
+    .tooltip-image {
+        text-decoration:none;
+        position:relative;
+        span {
+            display:none;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            color:black;
+            background:white;
+            img {
+                float:left;
+                max-width: 300px;
+            }
+        }
+        &:hover {
+            span {
+                display:block;
+                position:absolute;
+                top: -240px;
+                left: -120px;
+                z-index:1000;
+                width:auto;
+                max-width:320px;
+                min-height:128px;
+                border:1px solid #eee;
+                overflow:hidden;
+                padding:8px;
+                -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+</style>
