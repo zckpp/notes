@@ -51,5 +51,7 @@ Some small notes
 
 25: Radio select button with custom text input field
 
-25: Image tooltip pure CSS
+26: Image tooltip pure CSS
+
+27: Nested HTTP request with rx.js
 

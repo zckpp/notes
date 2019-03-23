@@ -671,3 +671,47 @@ fclose($fp);
         }
     }
 </style>
+
+<!--27: Nested HTTP request with rx.js-->
+<script>
+    // get Token with user credentials
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Authorization': 'Basic ' + btoa('user:pass'),
+            'Content-Type': 'text'
+        }),
+        responseType: 'text',
+    };
+
+    getStuff() {
+        return this.http.get<any>('urlForToken', this.httpOptions).pipe(
+            // user MergeMap for nested call
+            mergeMap(x => {
+                let httpOption = {
+                    headers: new HttpHeaders({
+                        'Authorization': 'Basic ' + btoa('user:pass'),
+                        'Content-type': 'application/json',
+                        'X-CSRF-Token': x,
+                    }),
+                };
+
+            return this.getPeople(httpOption).pipe(catchError(this.handleError),map(do somthing));
+            })
+        );
+    }
+
+    handleError(error: HttpErrorResponse) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error(
+                `Backend returned code ${error.status}, ` +
+                `body was: ${error.error.text}`);
+        }
+        // return an observable with a user-facing error message
+        return error;
+    };
+</script>
