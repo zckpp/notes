@@ -55,3 +55,5 @@ Some small notes
 
 27: Nested HTTP request with rx.js
 
+28: Asyn Validator in Angular Reactive Form
+

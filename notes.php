@@ -715,3 +715,17 @@ fclose($fp);
         return error;
     };
 </script>
+
+<!--28: Asyn Validator in Angular Reactive Form-->
+<script>
+    // use form builder
+    myForm = this.fb.group({
+        // remember to bind "this" to use observables in the same component
+        field: ['', Validators.regularValidator, this.asyncValidator.bind(this)],
+    });
+
+    asyncValidator(input) {
+        // do stuff..
+        return {validatorVariableInTemplate : true}
+    }
+</script>
