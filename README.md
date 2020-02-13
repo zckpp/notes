@@ -57,3 +57,4 @@ Some small notes
 
 28: Asyn Validator in Angular Reactive Form
 
+29: Menu hover animation on width

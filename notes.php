@@ -729,3 +729,22 @@ fclose($fp);
         return {validatorVariableInTemplate : true}
     }
 </script>
+
+<!--29: Menu hover animation on width-->
+<style>
+    /*scss*/
+    .menu-item {
+        &::after {
+             content: '';
+             display: block;
+             width: 0;
+             height: 2px;
+             background: $light-blue;
+             transition: width .3s;
+             margin-top: 3px;
+         }
+        &:hover::after, &.active::after {
+                             width: 100%;
+        }
+    }
+</style>
